@@ -59,6 +59,16 @@ class BST:
             return self._search(node.left, key)
         return self._search(node.right, key)
 
+    def get_height(self):
+        return self._get_height(self.root)
+
+    def _get_height(self, node):
+        if not node:
+            return 0
+        left_height = self._get_height(node.left)
+        right_height = self._get_height(node.right)
+        return 1 + max(left_height, right_height)
+
     def draw_tree(self):
         """Отрисовка дерева в консоли."""
         def _draw_tree(node, prefix="", is_left=True):

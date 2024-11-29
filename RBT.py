@@ -11,6 +11,12 @@ class RBTree:
     def __init__(self):
         self.TNULL = RBNode(None, 'BLACK')  # NIL-узел
         self.root = self.TNULL
+    def _height(self, node):
+        if node == self.TNULL:  # Если это NIL-узел, возвращаем 0
+            return 0
+        left_height = self._height(node.left)
+        right_height = self._height(node.right)
+        return 1 + max(left_height, right_height)
 
     def insert(self, key):
         new_node = RBNode(key)
