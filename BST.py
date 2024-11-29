@@ -87,5 +87,5 @@ bst.insert(7)
 bst.draw_tree()
 
 # Удаление узла и отрисовка
-bst.delete(2)
+bst.delete(6)
 bst.draw_tree()
