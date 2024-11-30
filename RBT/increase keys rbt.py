@@ -13,9 +13,9 @@ heights = []
 
 for size in tree_sizes:
     tree = RBTree()
-    # Вставляем случайные ключи в дерево
-    for _ in range(size):
-        tree.insert(random.randint(1, 1000))
+    # Вставляем монотонно возрастающие ключи в дерево
+    for key in range(1, size + 1):  # Ключи от 1 до `size`
+        tree.insert(key)
     heights.append(tree._height(tree.root))  # Высота дерева
 
 # Строим график с точками
