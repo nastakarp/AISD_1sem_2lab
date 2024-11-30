@@ -1,3 +1,5 @@
+from dfs_traversals import dfs_preorder, dfs_inorder, dfs_postorder
+
 class BSTNode:
     def __init__(self, key):
         self.key = key
@@ -99,3 +101,6 @@ bst.draw_tree()
 # Удаление узла и отрисовка
 bst.delete(6)
 bst.draw_tree()
+print("Прямой обход (Pre-order):", dfs_preorder(bst.root))
+print("Симметричный обход (In-order):", dfs_inorder(bst.root))
+print("Обратный обход (Post-order):", dfs_postorder(bst.root))
