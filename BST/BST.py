@@ -1,7 +1,6 @@
-import random
 from dfs_traversals import dfs_preorder, dfs_inorder, dfs_postorder
 from bfs_traversal import bfs
-
+import random
 class BSTNode:
     def __init__(self, key):
         self.key = key
@@ -95,10 +94,10 @@ bst.insert(1)
 bst.insert(3)
 bst.insert(5)
 bst.insert(7)
-
-'''for i in range(10):
-    bst.insert(random.randint(1, 100))'''
-
+'''
+for i in range(10):
+    bst.insert(random.randint(1, 10))
+'''
 # Отрисовка дерева после вставок
 bst.draw_tree()
 

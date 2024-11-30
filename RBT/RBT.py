@@ -1,3 +1,5 @@
+#from dfs_traversals import dfs_preorder, dfs_inorder, dfs_postorder
+from bfs_traversal import bfs
 class RBNode:
     def __init__(self, key, color='RED'):
         self.key = key
@@ -230,10 +232,13 @@ for key in keys:
     rb_tree.insert(key)
 
 rb_tree.draw_tree()
-
+'''
 key_to_find = 7
 result = rb_tree.search(key_to_find)
 if result != rb_tree.TNULL:
     print(f"Ключ {key_to_find} найден. Цвет: {result.color}")
 else:
-    print(f"Ключ {key_to_find} не найден.")
+    print(f"Ключ {key_to_find} не найден.")'''
+
+
+print("Обход в ширину (BFS):", bfs(rb_tree.root))
