@@ -1,6 +1,6 @@
 from BST import BST
-from AVL import AVLTree
-from RBT import RBTree
+from AVL import AVL
+from RBT import RBT
 
 import matplotlib.pyplot as plt
 import random
@@ -16,14 +16,14 @@ def measure_height_bst(n):
     return calculate_height(bst.root)
 
 def measure_height_avl(n):
-    avl = AVLTree()
+    avl = AVL()
     keys = random.sample(range(1, 10000), n)
     for key in keys:
         avl.insert(key)
     return calculate_height(avl.root)
 
 def measure_height_rb(n):
-    rb = RBTree()
+    rb = RBT()
     keys = random.sample(range(1, 10000), n)
     for key in keys:
         rb.insert(key)

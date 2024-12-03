@@ -11,9 +11,9 @@ def bfs(node):
     while queue:
         current = queue.popleft()
 
-        if current:  # Проверяем, что узел существует
-            result.append(current.key)  # Добавляем ключ узла в результат
-            if current.left or current.right:  # Добавляем только не пустые узлы
+        if current:
+            result.append(current.key)
+            if current.left or current.right:
                 queue.append(current.left)
                 queue.append(current.right)
 

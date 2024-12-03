@@ -11,10 +11,10 @@ class RBNode:
 
 class RBTree:
     def __init__(self):
-        self.TNULL = RBNode(None, 'BLACK')  # NIL-узел
+        self.TNULL = RBNode(None, 'BLACK')
         self.root = self.TNULL
     def _height(self, node):
-        if node == self.TNULL:  # Если это NIL-узел, возвращаем 0
+        if node == self.TNULL:
             return 0
         left_height = self._height(node.left)
         right_height = self._height(node.right)
@@ -26,7 +26,6 @@ class RBTree:
         new_node.right = self.TNULL
         new_node.color = 'RED'
 
-        # Найти место для нового узла
         parent = None
         current = self.root
         while current != self.TNULL:
@@ -44,7 +43,6 @@ class RBTree:
         else:
             parent.right = new_node
 
-        # Балансировка после вставки
         self._balance_insert(new_node)
 
     def _balance_insert(self, k):
@@ -224,8 +222,6 @@ class RBTree:
 
         print(_draw_tree(self.root))
 
-
-# Пример использования
 rb_tree = RBTree()
 keys = [5, 3, 7, 2, 4, 6, 8, 1, 9]
 for key in keys:
@@ -244,5 +240,4 @@ else:
 print("Прямой обход (Pre-order):", dfs_preorder(rb_tree.root))
 print("Симметричный обход (In-order):", dfs_inorder(rb_tree.root))
 print("Обратный обход (Post-order):", dfs_postorder(rb_tree.root))
-
 print("Обход в ширину (BFS):", bfs(rb_tree.root))

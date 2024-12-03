@@ -12,7 +12,6 @@ class BST:
         self.root = None
 
     def insert(self, key):
-        """Вставка узла в дерево."""
         self.root = self._insert(self.root, key)
 
     def _insert(self, node, key):
@@ -25,7 +24,6 @@ class BST:
         return node
 
     def delete(self, key):
-        """Удаление узла из дерева."""
         self.root = self._delete(self.root, key)
 
     def _delete(self, node, key):
@@ -46,13 +44,11 @@ class BST:
         return node
 
     def _get_min(self, node):
-        """Получить узел с минимальным ключом."""
         while node.left is not None:
             node = node.left
         return node
 
     def search(self, key):
-        """Поиск узла по ключу."""
         return self._search(self.root, key)
 
     def _search(self, node, key):
@@ -73,7 +69,6 @@ class BST:
         return 1 + max(left_height, right_height)
 
     def draw_tree(self):
-        """Отрисовка дерева в консоли."""
         def _draw_tree(node, prefix="", is_left=True):
             if node is not None:
                 result = prefix + ("├── " if is_left else "└── ") + str(node.key) + "\n"
@@ -84,7 +79,6 @@ class BST:
             return ""
         print(_draw_tree(self.root))
 
-# Пример использования
 bst = BST()
 
 bst.insert(4)
@@ -98,11 +92,9 @@ bst.insert(7)
 for i in range(10):
     bst.insert(random.randint(1, 10))
 '''
-# Отрисовка дерева после вставок
 bst.draw_tree()
 
 print("Прямой обход (Pre-order):", dfs_preorder(bst.root))
 print("Симметричный обход (In-order):", dfs_inorder(bst.root))
 print("Обратный обход (Post-order):", dfs_postorder(bst.root))
-
 print("Обход в ширину (BFS):", bfs(bst.root))

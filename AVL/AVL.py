@@ -11,17 +11,14 @@ class AVLTree:
     def __init__(self):
         self.root = None
 
-    # Вспомогательная функция для получения высоты узла
     def _height(self, node):
         return node.height if node else 0
 
-    # Вычисление баланса узла
     def _get_balance(self, node):
         if not node:
             return 0
         return self._height(node.left) - self._height(node.right)
 
-    # Поворот вправо
     def _rotate_right(self, z):
         y = z.left
         T3 = y.right
@@ -36,7 +33,6 @@ class AVLTree:
 
         return y
 
-    # Поворот влево
     def _rotate_left(self, z):
         y = z.right
         T2 = y.left
@@ -51,7 +47,6 @@ class AVLTree:
 
         return y
 
-    # Вставка ключа
     def insert(self, key):
         self.root = self._insert(self.root, key)
 
@@ -64,12 +59,9 @@ class AVLTree:
         elif key > node.key:
             node.right = self._insert(node.right, key)
         else:
-            return node  # Дубли ключей не допускаются
+            return node
 
-        # Обновление высоты текущего узла
         node.height = 1 + max(self._height(node.left), self._height(node.right))
-
-        # Проверка баланса
         balance = self._get_balance(node)
 
         # Левое-левое
@@ -92,12 +84,10 @@ class AVLTree:
 
         return node
 
-    # Удаление ключа
     def delete(self, key):
         self.root = self._delete(self.root, key)
 
     def _delete(self, node, key):
-        # Обычное удаление из BST
         if not node:
             return node
         if key < node.key:
@@ -141,13 +131,11 @@ class AVLTree:
 
         return node
 
-    # Получение минимального значения в дереве
     def _get_min(self, node):
         while node.left:
             node = node.left
         return node
 
-    # Поиск ключа
     def search(self, key):
         return self._search(self.root, key)
 
@@ -158,7 +146,6 @@ class AVLTree:
             return self._search(node.left, key)
         return self._search(node.right, key)
 
-    # Функция для отрисовки дерева
     def draw_tree(self):
         def _draw_tree(node, prefix="", is_left=True):
             if node is not None:
@@ -171,19 +158,14 @@ class AVLTree:
         print(_draw_tree(self.root))
 
 
-# Пример использования
 avl = AVLTree()
 
-# Вставка ключей
 keys = [10, 20, 30, 40, 50,25]
 for key in keys:
     avl.insert(key)
-
-# Отрисовка дерева
 avl.draw_tree()
 
 print("Прямой обход (Pre-order):", dfs_preorder(avl.root))
 print("Симметричный обход (In-order):", dfs_inorder(avl.root))
 print("Обратный обход (Post-order):", dfs_postorder(avl.root))
-
 print("Обход в ширину (BFS):", bfs(avl.root))

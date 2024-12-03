@@ -2,10 +2,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.linear_model import LinearRegression
 from scipy.optimize import curve_fit
-from BST import BST  # Предполагается, что у вас есть реализация BST
+from BST import BST
 import random
 tree_sizes = list(range(1, 101,5))
-# ===== Сценарий 1: Идеально сбалансированное дерево =====
+#Идеально сбалансированное дерево
 heights_balanced = [int(np.log2(size)) + 1 for size in tree_sizes]
 
 X_balanced = np.log2(np.array(tree_sizes)).reshape(-1, 1)
@@ -15,7 +15,7 @@ model_balanced = LinearRegression()
 model_balanced.fit(X_balanced, y_balanced)
 fitted_balanced = model_balanced.predict(X_balanced)
 
-# ===== Сценарий 2: Упорядоченные ключи =====
+#Упорядоченные ключи
 heights_ordered = []
 
 for size in tree_sizes:
@@ -31,7 +31,7 @@ model_ordered = LinearRegression()
 model_ordered.fit(X_ordered, y_ordered)
 fitted_ordered = model_ordered.predict(X_ordered)
 
-# ===== Сценарий 3: Случайные ключи =====
+#Случайные ключи
 def log_model(x, a, b):
     return a * np.log(x) + b
 heights_random = []
@@ -46,20 +46,17 @@ popt_random, _ = curve_fit(log_model, tree_sizes, heights_random)
 a_random, b_random = popt_random
 fitted_random = log_model(np.array(tree_sizes), a_random, b_random)
 
-# ===== Построение общего графика =====
 plt.figure(figsize=(12, 8))
 
-# Идеально сбалансированное дерево
 plt.scatter(tree_sizes, heights_balanced, color='blue', s=10, label='Ключи распределены равномерно (лучший случай)')
 plt.plot(tree_sizes, fitted_balanced, color='blue', linestyle='--', label='регрессия')
-# Случайные ключи
+
 plt.scatter(tree_sizes, heights_random, color='red', s=10, label='Случайная величина ключа (средний случай)')
 plt.plot(tree_sizes, fitted_random, color='red', linestyle='--', label='регрессия')
-# Упорядоченные ключи
+
 plt.scatter(tree_sizes, heights_ordered, color='green', s=10, label='Упорядоченные ключи (худший случай)')
 plt.plot(tree_sizes, fitted_ordered, color='green', linestyle='--', label='регрессия')
 
-# Настройки графика
 plt.title('Сравнение высоты дерева для разных случаев', fontsize=14)
 plt.xlabel('Количество ключей', fontsize=12)
 plt.ylabel('Высота дерева', fontsize=12)
