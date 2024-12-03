@@ -1,4 +1,4 @@
-#from dfs_traversals import dfs_preorder, dfs_inorder, dfs_postorder
+from dfs_traversals import dfs_preorder, dfs_inorder, dfs_postorder
 from bfs_traversal import bfs
 class RBNode:
     def __init__(self, key, color='RED'):
@@ -240,5 +240,9 @@ if result != rb_tree.TNULL:
 else:
     print(f"Ключ {key_to_find} не найден.")'''
 
+
+print("Прямой обход (Pre-order):", dfs_preorder(rb_tree.root))
+print("Симметричный обход (In-order):", dfs_inorder(rb_tree.root))
+print("Обратный обход (Post-order):", dfs_postorder(rb_tree.root))
 
 print("Обход в ширину (BFS):", bfs(rb_tree.root))

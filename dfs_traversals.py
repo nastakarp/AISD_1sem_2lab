@@ -6,9 +6,11 @@ def dfs_preorder(node):
 
 def _dfs_preorder(node, result):
     if node:
-        result.append(node.key)  # Посетить узел
-        _dfs_preorder(node.left, result)  # Обойти левое поддерево
-        _dfs_preorder(node.right, result)  # Обойти правое поддерево
+        result.append(node.key)  # Посетить текущий узел
+        if node.left:  # Проверяем существование левого потомка
+            _dfs_preorder(node.left, result)  # Обойти левое поддерево
+        if node.right:  # Проверяем существование правого потомка
+            _dfs_preorder(node.right, result)  # Обойти правое поддерево
 
 
 #Симметричный обход (In-order).

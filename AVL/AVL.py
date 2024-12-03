@@ -160,7 +160,6 @@ class AVLTree:
 
     # Функция для отрисовки дерева
     def draw_tree(self):
-        """Отрисовка AVL-дерева в консоли."""
         def _draw_tree(node, prefix="", is_left=True):
             if node is not None:
                 result = prefix + ("├── " if is_left else "└── ") + str(node.key) + "\n"
