@@ -1,6 +1,6 @@
 from dfs_traversals import dfs_preorder, dfs_inorder, dfs_postorder
 from bfs_traversal import bfs
-import random
+
 class BSTNode:
     def __init__(self, key):
         self.key = key
@@ -79,21 +79,30 @@ class BST:
             return ""
         print(_draw_tree(self.root))
 
+# Примеры использования
 bst = BST()
 
-bst.insert(4)
-bst.insert(2)
-bst.insert(6)
-bst.insert(1)
-bst.insert(3)
-bst.insert(5)
-bst.insert(7)
-'''
-for i in range(10):
-    bst.insert(random.randint(1, 10))
-'''
+# Вставка элементов
+keys_to_insert = [4, 2, 6, 1, 3, 5, 7]
+for key in keys_to_insert:
+    print(f"\nВставка ключа {key}:")
+    bst.insert(key)
+    bst.draw_tree()
+
+# Поиск элемента
+key_to_search = 3
+print(f"\nПоиск ключа {key_to_search}:")
+result = bst.search(key_to_search)
+print(f"Результат поиска: {'найден' if result else 'не найден'}")
+
+# Удаление элемента
+key_to_delete = 6
+print(f"\nУдаление ключа {key_to_delete}:")
+bst.delete(key_to_delete)
 bst.draw_tree()
 
+# Печать обходов
+print("\nОбходы дерева:")
 print("Прямой обход (Pre-order):", dfs_preorder(bst.root))
 print("Симметричный обход (In-order):", dfs_inorder(bst.root))
 print("Обратный обход (Post-order):", dfs_postorder(bst.root))

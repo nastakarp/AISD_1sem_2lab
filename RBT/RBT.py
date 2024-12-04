@@ -221,22 +221,32 @@ class RBTree:
             return prefix + ("├── " if is_left else "└── ") + "NIL (BLACK)\n"
 
         print(_draw_tree(self.root))
-
 rb_tree = RBTree()
-keys = [5, 3, 7, 2, 4, 6, 8, 1, 9]
-for key in keys:
+
+# Вставка ключей
+keys_to_insert = [5, 3, 7, 2, 4, 6, 8, 1, 9]
+for key in keys_to_insert:
+    print(f"\nВставка ключа {key}:")
     rb_tree.insert(key)
+    rb_tree.draw_tree()
 
-rb_tree.draw_tree()
-'''
-key_to_find = 7
-result = rb_tree.search(key_to_find)
+# Поиск ключа
+key_to_search = 70
+print(f"\nПоиск ключа {key_to_search}:")
+result = rb_tree.search(key_to_search)
 if result != rb_tree.TNULL:
-    print(f"Ключ {key_to_find} найден. Цвет: {result.color}")
+    print(f"Ключ {key_to_search} найден. Цвет: {result.color}")
 else:
-    print(f"Ключ {key_to_find} не найден.")'''
+    print(f"Ключ {key_to_search} не найден.")
 
+# Удаление ключа
+key_to_delete = 6
+print(f"\nУдаление ключа {key_to_delete}:")
+rb_tree.delete(key_to_delete)
+rb_tree.draw_tree()
 
+# Обходы дерева
+print("\nОбходы дерева:")
 print("Прямой обход (Pre-order):", dfs_preorder(rb_tree.root))
 print("Симметричный обход (In-order):", dfs_inorder(rb_tree.root))
 print("Обратный обход (Post-order):", dfs_postorder(rb_tree.root))

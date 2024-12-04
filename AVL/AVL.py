@@ -1,5 +1,6 @@
 from dfs_traversals import dfs_preorder, dfs_inorder, dfs_postorder
 from bfs_traversal import bfs
+
 class AVLNode:
     def __init__(self, key):
         self.key = key
@@ -157,14 +158,30 @@ class AVLTree:
             return ""
         print(_draw_tree(self.root))
 
-
+# Примеры использования
 avl = AVLTree()
 
-keys = [10, 20, 30, 40, 50,25]
-for key in keys:
+# Вставка элементов
+keys_to_insert = [10, 20, 30, 40, 50, 25]
+for key in keys_to_insert:
+    print(f"\nВставка ключа {key}:")
     avl.insert(key)
+    avl.draw_tree()
+
+# Поиск элемента
+key_to_search = 25
+print(f"\nПоиск ключа {key_to_search}:")
+result = avl.search(key_to_search)
+print(f"Результат поиска: {'найден' if result else 'не найден'}")
+
+# Удаление элемента
+key_to_delete = 20
+print(f"\nУдаление ключа {key_to_delete}:")
+avl.delete(key_to_delete)
 avl.draw_tree()
 
+# Печать обходов
+print("\nОбходы дерева:")
 print("Прямой обход (Pre-order):", dfs_preorder(avl.root))
 print("Симметричный обход (In-order):", dfs_inorder(avl.root))
 print("Обратный обход (Post-order):", dfs_postorder(avl.root))
